@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .divs{
+            width: 100px;
+            height: 100px;
+        }
+        .active{
+            background: rebeccapurple;
+        }
+        .isactive{
+            background: red;
+        }
+        .one{
+            background: olive;
+        }
+        .two{
+            background: indianred;
+        }
+        .three{
+            background: khaki;
+        }
+    </style>
+    <script src="angular.min.js"></script>
+</head>
+<body ng-app="" ng-init="isActive=false;num=1">
+    <button ng-click="isActive=!isActive">切换</button>
+    <div class="divs" ng-class="{true:'active',false:'isactive'}[isActive]"></div>
+    <button ng-click="num=num+1">{{num}}</button>
+    <div class="divs" ng-class="{1:'one',2:'two',3:'three'}[num]"></div>
+</body>
+</html>

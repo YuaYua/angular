@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="angular.min.js"></script>
+
+</head>
+<body ng-app="lckApp" >
+    <div ng-controller="myController">
+        <li ng-repeat="obj in person">
+            <div ng-repeat="(key,value) in obj">
+                <span>{{"key是:"+key}}</span>
+                <span>{{"value是:"+value}}</span>
+            </div>
+        </li>
+    </div>
+    <!--<div ng-controller="">-->
+        <!---->
+    <!--</div>-->
+    <!--<div ng-controller=""></div>-->
+</body>
+<script>
+    var app=angular.module("lckApp",[]);
+    function  myController($scope) {
+        $scope.person=[{
+            name:'lck',
+            page:18
+        },{
+            name:'cx',
+            page:17
+        }]
+    }
+    app.controller("myController",myController);
+</script>
+</html>

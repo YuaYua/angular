@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="angular.min.js"></script>
+</head>
+<body ng-app="lckApp">
+    <div ng-controller="myController">
+        <input type="text" ng-model="name">
+        <ul>
+            <li ng-repeat="obj in objArr | orderBy:'age':true | filter:name">
+                {{obj}}
+                <!--<p ng-repeat="(key,value) in obj">-->
+                    <!--<span>{{key+":"+value}}</span>-->
+                <!--</p>-->
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    var app=angular.module("lckApp",[]);
+    app.controller("myController",function ($scope,$http) {
+        $http.get("http://localhost:9090/userList").success(function (res) {
+            console.log(res);
+            $scope.objArr=res;
+        })
+    })
+</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="lckApp">
+        <div ng-controller="myController">
+            <input type="text" ng-change="searchname()" ng-model="search">
+            <ul>
+                <li ng-repeat="item in res">
+                    <p ng-repeat="(key,value) in item">
+                        <span>{{key+value}}</span>
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+
+
+    var app=angular.module("lckApp",[]);
+    app.controller("myController",function ($scope,$http) {
+        $scope.searchname=function () {
+            var url="http://localhost:9090/finduser?name="+$scope.search+"&callback=JSON_CALLBACK";
+            $http.jsonp(url).success(function (res) {
+                $scope.res=res;
+            });
+        }
+    })
+</script>
+</html>

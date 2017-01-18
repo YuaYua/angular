@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .divs{
+            width: 100px;
+            height:100px;
+            background: rebeccapurple;
+        }
+    </style>
+    <script src="angular.min.js"></script>
+</head>
+<body ng-app="" ng-init="dis=false">
+    <button ng-click="dis=!dis">显示/隐藏</button>
+    <div class="divs" ng-hide="dis"></div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="lckApp">
+        <div ng-controller="myController">
+            <input type="text" ng-change="read()" ng-model="search">
+            <ul>
+               <li ng-repeat="item in result">{{item}}</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+<script>
+    var app=angular.module("lckApp",[]);
+    app.controller("myController",function ($scope,$http) {
+//        $http.jsonp("").success(function (res) {
+            $scope.read=function () {
+                var url="https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd="+$scope.search+"&cb=JSON_CALLBACK"
+                //console.log(url);
+                $http.jsonp(url).success(function (res) {
+                    console.log(res);
+                    $scope.result=res.s;
+                })
+            };
+//        })
+    })
+</script>
+</html>

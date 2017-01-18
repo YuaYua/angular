@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="angular.min.js"></script>
+</head>
+<body ng-app="lckApp">
+    <div nn-lck=""></div>
+    <nn-lck></nn-lck>
+    <div class="nn-lck"></div>
+</body>
+<script>
+    var app=angular.module("lckApp",[]);
+    app.directive("nnLck",function () {
+        return {
+            replace:false,
+            restrict:'EAC',
+            template:"<h1>jajajaj</h1>"
+        }
+    })
+</script>
+</html>

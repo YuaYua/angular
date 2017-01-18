@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="angular.min.js"></script>
+    <script src="angular-sanitize.js"></script>
+</head>
+<body ng-app="lckApp">
+    <div ng-controller="myController" id="divs">
+        <button ng-click="remove()">停止</button>
+        <span ng-bind-html="name"></span>
+    </div>
+</body>
+<script>
+    var app=angular.module("lckApp",['ngSanitize']);
+    app.controller('myController',function ($scope,$http,$location,$timeout,$interval) {
+
+        $scope.remove=function () {
+            $interval.cancel($scope.times);
+        }
+
+        var times=$interval(function () {
+            console.log("heiehei")
+        },2000);
+        $scope.times=times;
+        $http.get("content.html").success(function (res) {
+            $scope.name=res;
+        });
+    })
+</script>
+</html>

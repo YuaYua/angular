@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .divs{
+            width: 100px;
+            height: 100px;
+        }
+        .active{
+            background: rebeccapurple;
+        }
+        .isactive{
+            background: red;
+        }
+    </style>
+    <script src="angular.min.js"></script>
+</head>
+<body ng-app="" ng-init="isActive=false;arr=[3,5,7];objArr=[{name:'lck',password:123},{name:'tang',password:111}]">
+    <ul>
+        <li ng-repeat="item in arr">{{item}}</li>
+    </ul>
+    <ul>
+        <li ng-repeat="obj in objArr">
+            <div ng-repeat="(key,value) in obj">
+                <p>{{"我的 key 是："+key}}</p>
+                <p>{{"我的 value 是"+value}}</p>
+            </div>
+            <!--<span>{{"用户名为"+obj.name}}</span>-->
+            <!--<span>{{"密码为"+obj.password}}</span>-->
+        </li>
+    </ul>
+    <button ng-click="isActive=!isActive">切换</button>
+    <div class="divs" ng-class="{true:'active',false:'isactive'}[isActive]"></div>
+</body>
+</html>

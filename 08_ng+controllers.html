@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="angular.min.js"></script>
+
+</head>
+<body ng-app="lckApp">
+    <div ng-controller="myController">
+        <button ng-click="add()">点击</button>
+        <p>{{"你点击了"+num+"次"}}</p>
+    </div>
+    <div ng-controller="secondController">
+        <span ng-bind="num"></span>
+    </div>
+</body>
+<script>
+    var app=angular.module("lckApp",[]);
+    app.controller("myController",function ($scope) {
+        $scope.num=0;
+        $scope.add=function () {
+            $scope.num++;
+        }
+    })
+    app.controller("secondController",function ($scope) {
+        $scope.num=80;
+    })
+</script>
+</html>
